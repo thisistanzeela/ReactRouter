@@ -1,5 +1,6 @@
 import Card from "./Card";
 import MovieData from "./MovieData";
+
 const Body = () => {
   return (
     <>
