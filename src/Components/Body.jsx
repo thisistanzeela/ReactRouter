@@ -1,7 +1,25 @@
-import Card from "./Card";
-import MovieData from "./MovieData";
+import { useState, useEffect } from "react";
+import Card,{HighRated} from "./Card";
+// import MovieData from "./MovieData";
 
 const Body = () => {
+  const [movie, setMovie] = useState([]);
+  const HighRatedMovie = HighRated(Card)
+
+  useEffect(() => {
+    fetchMovie();
+  }, []);
+
+  const fetchMovie = async () => {
+    const apiData = await fetch("https://api.tvmaze.com/search/shows?q=marvel");
+
+    const json = await apiData.json();
+    setMovie(json);
+  };
+
+  // if(movie == null ){
+  //   return <h1>Loading...</h1>
+  // }
   return (
     <>
       <div className="flex justify-center m-10">
@@ -14,10 +32,12 @@ const Body = () => {
           Search
         </button>
       </div>
-
-      {MovieData.map((movie) => (
-        <Card data={movie} />
-      ))}
+     
+      {movie.map((movie) => {
+        {
+          return movie.score * 100 > 60 ? ( <HighRatedMovie data={movie} />) : ( <Card data={movie} />)
+        }
+})}
     </>
   );
 };
