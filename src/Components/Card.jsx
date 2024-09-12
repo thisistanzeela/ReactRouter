@@ -33,15 +33,15 @@ const Card = ({ data }) => {
   );
 };
 
-// export const HighRated = (Card) => {
-//   return (data) => {
-//     return (
-//       <div>
-//         {/* <span className="">Top Rated</span> */}
-//         <Card {...data} />
-//       </div>
-//     );
-//   };
-// };
+export const HighRated = (Card) => {
+  return (data) => {
+    return (
+      <div>
+        {/* <span className="">Top Rated</span> */}
+        <Card {...data} />
+      </div>
+    );
+  };
+};
 
 export default Card;
